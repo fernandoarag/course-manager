@@ -1,42 +1,50 @@
 <section>
-  <h1>Teste do h1</h1>
+  <h1>Course List</h1>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Filter By:</label>
+
+    <div class="col-sm-10">
+      <input class="form-control" [(ngModel)]="filter" />
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Code</th>
+        <th>Release Date</th>
+        <th>Rating</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let course of filteredCourses">
+        <td>
+          <img
+            [src]="course.imageUrl"
+            [alt]="course.name"
+            style="
+              width: 30px;
+              height: 30px;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
+        </td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.price }}</td>
+        <td>{{ course.code }}</td>
+        <td>{{ course.releaseDate }}</td>
+        <td>
+          <app-star [rating]="course.rating"></app-star>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </section>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Imagem</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Code</th>
-      <th>Release Date</th>
-      <th>Rating</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let course of courses">
-      <td>
-        <img
-          [src]="course.imageUrl"
-          [alt]="course.name"
-          style="
-            width: 30px;
-            height: 30px;
-            object-fit: cover;
-            object-position: center;
-          "
-        />
-      </td>
-      <td>{{ course.name }}</td>
-      <td>{{ course.price }}</td>
-      <td>{{ course.code }}</td>
-      <td>{{ course.releaseDate }}</td>
-      <td>
-        <app-star [rating]="course.rating"></app-star>
-      </td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
