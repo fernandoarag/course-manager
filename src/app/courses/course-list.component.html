@@ -5,8 +5,7 @@
     <label class="col-sm-2 col-form-label">Filter By:</label>
 
     <div class="col-sm-10">
-      <input class="form-control" />
-      <!-- [(ngModel)]="filter" -->
+      <input class="form-control" [(ngModel)]="filter" />
     </div>
   </div>
 
@@ -39,8 +38,8 @@
         </td>
         <td>{{ course.name }}</td>
         <td>{{ course.price }}</td>
-        <td>{{ course.code }}</td>
-        <td>{{ course.releaseDate }}</td>
+        <td>{{ course.code | uppercase | replace: "-":"" }}</td>
+        <td>{{ course.releaseDate | date: "dd/MM/yyyy" }}</td>
         <td>
           <app-star [rating]="course.rating"></app-star>
         </td>
